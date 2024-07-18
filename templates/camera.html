@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Camera{% endblock %}
+
+{% block top_bar %}
+<div class="col-2">
+    <a href="{{ url_for('index') }}" class="btn btn-back">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="camera-container">
+    <video id="camera-feed" autoplay></video>
+    <p id="camera-unavailable" style="display: none;">Camera Unavailable</p>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Check for camera availability and access the camera feed
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function(stream) {
+            var video = document.getElementById('camera-feed');
+            video.srcObject = stream;
+        })
+        .catch(function(error) {
+            document.getElementById('camera-feed').style.display = 'none';
+            document.getElementById('camera-unavailable').style.display = 'block';
+        });
+</script>
+{% endblock %}

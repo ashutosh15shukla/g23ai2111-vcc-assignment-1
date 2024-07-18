@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Messages with {{ recipient }}{% endblock %}
+
+{% block top_bar %}
+<div class="col-2">
+    <a href="{{ url_for('messages') }}" class="btn btn-back">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="messages-container">
+    {% for sender, recipient, message, timestamp in messages %}
+        <div class="message {% if sender == 'Me' %}sent{% else %}received{% endif %}">
+            <div class="message-content">{{ message }}</div>
+            <div class="message-timestamp">{{ timestamp }}</div>
+        </div>
+    {% endfor %}
+</div>
+<form method="POST" action="{{ url_for('thread_messages', recipient=recipient) }}" class="reply-form">
+    <div class="input-group">
+        <input type="text" name="message" class="form-control" placeholder="Type your message here...">
+        <button type="submit" class="btn btn-primary"><i class="fas fa-arrow-right"></i></button>
+    </div>
+</form>
+{% endblock %}

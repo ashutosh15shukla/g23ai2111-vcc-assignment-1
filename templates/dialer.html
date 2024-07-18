@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Dialer{% endblock %}
+
+{% block top_bar %}
+<div class="col-2">
+    <a href="{{ url_for('index') }}" class="btn btn-back">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<form class="dialer">
+    <div class="form-group mb-3">
+        <input type="text" name="number" class="form-control expression-input" placeholder="Enter number" readonly>
+    </div>
+    <div class="dialer-buttons">
+        <button type="button" class="btn calc-btn" onclick="appendToNumber('1')">1</button>
+        <button type="button" class="btn calc-btn" onclick="appendToNumber('2')">2</button>
+        <button type="button" class="btn calc-btn" onclick="appendToNumber('3')">3</button>
+        
+        <button type="button" class="btn calc-btn" onclick="appendToNumber('4')">4</button>
+        <button type="button" class="btn calc-btn" onclick="appendToNumber('5')">5</button>
+        <button type="button" class="btn calc-btn" onclick="appendToNumber('6')">6</button>
+        
+        <button type="button" class="btn calc-btn" onclick="appendToNumber('7')">7</button>
+        <button type="button" class="btn calc-btn" onclick="appendToNumber('8')">8</button>
+        <button type="button" class="btn calc-btn" onclick="appendToNumber('9')">9</button>
+        
+        <button type="button" class="btn calc-btn" onclick="appendToNumber('*')">*</button>
+        <button type="button" class="btn calc-btn" onclick="appendToNumber('0')">0</button>
+        <button type="button" class="btn calc-btn" onclick="appendToNumber('#')">#</button>
+        
+        <button type="button" class="btn calc-btn equals-btn" onclick="showPopup()">Call</button>
+        <button type="button" class="btn calc-btn clear-btn" onclick="clearNumber()">Clear</button>
+    </div>
+</form>
+
+<!-- Popup Modal -->
+<div class="modal fade" id="networkModal" tabindex="-1" aria-labelledby="networkModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="networkModalLabel">No Network</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                No Network
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Okay</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function appendToNumber(value) {
+        const numberInput = document.querySelector('input[name="number"]');
+        numberInput.value += value;
+    }
+
+    function clearNumber() {
+        const numberInput = document.querySelector('input[name="number"]');
+        numberInput.value = '';
+    }
+
+    function showPopup() {
+        const networkModal = new bootstrap.Modal(document.getElementById('networkModal'));
+        networkModal.show();
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Calculator{% endblock %}
+
+{% block top_bar %}
+<div class="col-2">
+    <a href="{{ url_for('index') }}" class="btn btn-back">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<form method="POST" action="{{ url_for('calculator') }}" class="calculator">
+    <div class="form-group mb-3">
+        <input type="text" name="expression" class="form-control expression-input" placeholder="0" value="{{ expression }}" readonly>
+    </div>
+    <div class="form-group mb-3">
+        <input type="text" class="form-control result-input" placeholder="" value="{{ result }}" readonly>
+    </div>
+    <div class="calculator-buttons">
+        <button type="button" class="btn calc-btn" onclick="appendToExpression('7')">7</button>
+        <button type="button" class="btn calc-btn" onclick="appendToExpression('8')">8</button>
+        <button type="button" class="btn calc-btn" onclick="appendToExpression('9')">9</button>
+        <button type="button" class="btn calc-btn op-btn" onclick="appendToExpression('/')">/</button>
+        
+        <button type="button" class="btn calc-btn" onclick="appendToExpression('4')">4</button>
+        <button type="button" class="btn calc-btn" onclick="appendToExpression('5')">5</button>
+        <button type="button" class="btn calc-btn" onclick="appendToExpression('6')">6</button>
+        <button type="button" class="btn calc-btn op-btn" onclick="appendToExpression('*')">*</button>
+        
+        <button type="button" class="btn calc-btn" onclick="appendToExpression('1')">1</button>
+        <button type="button" class="btn calc-btn" onclick="appendToExpression('2')">2</button>
+        <button type="button" class="btn calc-btn" onclick="appendToExpression('3')">3</button>
+        <button type="button" class="btn calc-btn op-btn" onclick="appendToExpression('-')">-</button>
+        
+        <button type="button" class="btn calc-btn" onclick="appendToExpression('0')">0</button>
+        <button type="button" class="btn calc-btn" onclick="appendToExpression('.')">.</button>
+        <button type="submit" class="btn calc-btn equals-btn">=</button>
+        <button type="button" class="btn calc-btn op-btn" onclick="appendToExpression('+')">+</button>
+        
+        <button type="button" class="btn calc-btn clear-btn" onclick="clearExpression()">C</button>
+    </div>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function appendToExpression(value) {
+        const expressionInput = document.querySelector('input[name="expression"]');
+        expressionInput.value += value;
+
+        const resultInput = document.querySelector('.result-input');
+        try {
+            resultInput.value = eval(expressionInput.value) || '';
+        } catch (e) {
+            resultInput.value = resultInput.value || '';
+        }
+    }
+
+    function clearExpression() {
+        const expressionInput = document.querySelector('input[name="expression"]');
+        expressionInput.value = '';
+        const resultInput = document.querySelector('.result-input');
+        resultInput.value = '';
+    }
+</script>
+{% endblock %}

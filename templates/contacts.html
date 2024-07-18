@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Introduction{% endblock %}
+
+{% block top_bar %}
+<div class="col-2">
+    <a href="{{ url_for('index') }}" class="btn btn-back">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="introduction-container">
+    <img src="{{ url_for('static', filename='img/image.jpg') }}" alt="Ashutosh Kumar Shukla" class="profile-image">
+    <h1>Ashutosh Kumar Shukla</h1>
+    <p>Roll Number: G23AI2111</p>
+</div>
+{% endblock %}

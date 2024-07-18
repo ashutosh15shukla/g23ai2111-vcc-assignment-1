@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Messages{% endblock %}
+
+{% block top_bar %}
+<div class="col-2">
+    <a href="{{ url_for('index') }}" class="btn btn-back">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="threads-container">
+    {% for recipient, last_timestamp, last_message in threads %}
+        <div class="thread">
+            <a href="{{ url_for('thread_messages', recipient=recipient) }}" class="thread-link">
+                <div class="thread-recipient">{{ recipient }}</div>
+                <div class="thread-last-message">{{ last_message[:15] }}...</div>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

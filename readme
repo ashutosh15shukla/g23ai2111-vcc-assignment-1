@@ -1,0 +1,42 @@
+Assignment 1 for VCC
+
+Process followed:
+
+1. Created the application
+    - Using Flask Framework and Sqlite3
+    - The app primarily simulates a simple OS for portable devices
+2. Created the requirements.txt
+    - This web application requires Flask to be installed
+    - This web application requires Werkzeug to be installed
+    - The version of Flask and Werkzeug should match
+3. Created the Dockerfile
+    - Selected a well known slim image of Python (3.9)
+    - Created the internal work directory using WORKDIR
+    - Copied all the files to the work directory
+    - Installed all the libraries from the requirements.txt using RUN
+    - Exposed the correct port to run the application on
+    - Created a virtual environment
+    - Executed -> python -> app.py
+4. Built the Image using Docker
+    - using the command 
+        docker build -t webapp .
+    - tested the image using the command
+        docker run -p 5000:5000 webapp
+5. Uploaded to Github
+    - Initialize the repository locally
+    - Create a repository online
+    - Get the link to the repository
+    - Push!
+
+App's Functionality
+-
+-
+-
+-
+-
+-
+-
+
+Details of Author
+Author:     Ashutosh Kumar Shukla 
+RollNumber: G23AI2111
