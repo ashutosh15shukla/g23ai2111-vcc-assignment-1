@@ -1,42 +1,56 @@
 Assignment 1 for VCC
 
-Process followed:
+# Process Followed
 
-1. Created the application
-    - Using Flask Framework and Sqlite3
-    - The app primarily simulates a simple OS for portable devices
-2. Created the requirements.txt
-    - This web application requires Flask to be installed
-    - This web application requires Werkzeug to be installed
-    - The version of Flask and Werkzeug should match
-3. Created the Dockerfile
-    - Selected a well known slim image of Python (3.9)
-    - Created the internal work directory using WORKDIR
-    - Copied all the files to the work directory
-    - Installed all the libraries from the requirements.txt using RUN
-    - Exposed the correct port to run the application on
-    - Created a virtual environment
-    - Executed -> python -> app.py
-4. Built the Image using Docker
-    - using the command 
-        docker build -t webapp .
-    - tested the image using the command
-        docker run -p 5000:5000 webapp
-5. Uploaded to Github
-    - Initialize the repository locally
-    - Create a repository online
-    - Get the link to the repository
-    - Push!
+## Created the Application:
+	Developed the application using the Flask framework and SQLite3.
+	The app simulates a simple operating system for portable devices, providing various functionalities such as a calculator, dialer, messaging, camera access, and contact management.
 
-App's Functionality
--
--
--
--
--
--
--
+## Created the requirements.txt:
+	Listed all required dependencies for the web application.
+	Specified Flask and Werkzeug as necessary libraries.
+	Ensured the versions of Flask and Werkzeug are compatible and match.
 
-Details of Author
-Author:     Ashutosh Kumar Shukla 
-RollNumber: G23AI2111
+## Created the Dockerfile:
+	Selected a well-known slim image of Python (3.9) as the base image.
+	Set up the internal working directory using the WORKDIR instruction.
+	Copied all application files to the working directory.
+	Installed all required libraries from the requirements.txt file using the RUN instruction.
+	Exposed the appropriate port (5000) for running the application.
+	Created a virtual environment.
+	Specified the entry point to run the application using CMD with python app.py.
+
+## Built the Docker Image:
+	Built the Docker image using the command:
+		docker build -t webapp .
+	Tested the Docker image locally using the command:
+		docker run -p 5000:5000 webapp
+	Opened 127.0.0.1:5000 in a web browser
+
+## Uploaded to GitHub:
+	Initialized the Git repository locally.
+	Created a new repository on GitHub.
+	Added the GitHub repository as a remote repository.
+	Pushed the local repository to GitHub using the appropriate commands.
+
+# App Functionality
+
+## Home Page: The home page (index.html) serves as the main landing page for the application. It provides an overview of the available features and easy navigation to different sections of the app.
+
+## Calculator: The calculator page (calculator.html) allows users to perform basic arithmetic operations. Users can input expressions and receive calculated results instantly.
+
+## Dialer: The dialer page (dialer.html) simulates a phone dialer interface. Users can input phone numbers and simulate dialing.
+
+## Messages: The messages page (messages.html) provides a messaging interface where users can send and receive messages. The messages are stored in a SQLite database, and users can view message threads and send new messages to contacts.
+
+## Threads: The threads page (threads.html) displays a list of all message threads. Each thread shows the contact name, last message, and timestamp, allowing users to easily navigate to individual message threads.
+
+## Camera: The camera page (camera.html) provides an interface for accessing the device's camera. Users can view the camera feed and take pictures directly from the web interface.
+
+## Contacts: The contacts page (contacts.html) displays a list of contacts. However, this was under construction, so it has been replaced with 'About Me'
+
+## Static Files: The application includes static files such as CSS stylesheets and images to enhance the user interface and experience. These files are located in the static directory and are used across various pages to ensure a consistent look and feel.
+
+# Details of Author
+## Author:     Ashutosh Kumar Shukla 
+## RollNumber: G23AI2111

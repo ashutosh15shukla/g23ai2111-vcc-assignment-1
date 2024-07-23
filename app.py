@@ -8,7 +8,7 @@ if not os.path.exists('database'):
     os.makedirs('database')
 
 def init_db():
-    conn = sqlite3.connect('database/messages.db')
+    conn = sqlite3.connect('/mnt/database/messages.db')
     cursor = conn.cursor()
     cursor.execute('''CREATE TABLE IF NOT EXISTS messages
                       (id INTEGER PRIMARY KEY AUTOINCREMENT,
